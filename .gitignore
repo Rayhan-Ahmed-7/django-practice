@@ -13,3 +13,4 @@ db.sqlite3
 *.pyo
 *.sqlite3
 *.pyc
+node_modules

@@ -1,20 +1,26 @@
 <h1>Update Todo</h1>
 <form method="POST">
   {% csrf_token %}
-  <input type="text" name="task" value="{{ todo.task }}" />
-  <label for="completed">Completed</label>
+  <label for="task">Task:</label>
+  <input type="text" id="task" name="task" value="{{ todo.task }}" required />
+
+  <label for="completed">Completed:</label>
+
+  {% if todo.completed %}
   <input
     type="checkbox"
-    name="completed"
     id="completed"
-    {%
-    if
-    todo.completed
-    %}checked{%
-    endif
-    %}
+    name="completed"
+    checked
   />
-
+{% else %}
+  <input
+    type="checkbox"
+    id="completed"
+    name="completed"
+  />
+{% endif %}
+  
   <button type="submit">Update</button>
 </form>
 <a href="{% url 'list_todos' %}">Back to list</a>
